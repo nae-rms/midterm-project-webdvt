@@ -185,9 +185,11 @@
   
     padding: 8px 10px;
   
-    background: #ead8c4;
+    background: var(--background);
+    color: var(--text);
   
-    border-left: 4px solid var(--border);
+    border: 2px solid var(--border);
+    border-left: 4px solid var(--lamp);
   
     font-size: 16px;
   }
