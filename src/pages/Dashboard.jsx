@@ -1,3 +1,5 @@
+import CatOffice from "../components/CatOffice";
+
 import "../styles/Dashboard.css";
 
 function Dashboard() {
@@ -5,11 +7,15 @@ function Dashboard() {
     <div className="dashboard">
 
       <header className="dashboard-header">
+
         <p className="dashboard-subtitle">
           PERSONAL BUDGET TRACKER
         </p>
 
         <h1>THE LITTLE LEDGER</h1>
+
+        <CatOffice />
+
       </header>
 
 
@@ -17,13 +23,16 @@ function Dashboard() {
 
         <div className="section-heading">
           <span className="heading-decoration">◆</span>
+
           <h2>LATEST ENTRY</h2>
+
           <span className="heading-decoration">◆</span>
         </div>
 
         <div className="latest-entry">
 
           <div className="entry-info">
+
             <p className="entry-title">
               No transactions yet
             </p>
@@ -31,6 +40,7 @@ function Dashboard() {
             <p className="entry-meta">
               ---
             </p>
+
           </div>
 
           <p className="entry-amount">
@@ -50,6 +60,7 @@ function Dashboard() {
 
         <div className="balance-display">
           <span>₱</span>
+
           <strong>0.00</strong>
         </div>
 
@@ -59,9 +70,17 @@ function Dashboard() {
       <section className="ledger-section">
 
         <div className="section-heading">
-          <span className="heading-decoration">◆</span>
+
+          <span className="heading-decoration">
+            ◆
+          </span>
+
           <h2>LEDGER</h2>
-          <span className="heading-decoration">◆</span>
+
+          <span className="heading-decoration">
+            ◆
+          </span>
+
         </div>
 
 
@@ -85,13 +104,19 @@ function Dashboard() {
         <div className="ledger-list">
 
           <div className="ledger-empty">
-            <span className="empty-icon">◇</span>
+
+            <span className="empty-icon">
+              ◇
+            </span>
 
             <p>
               YOUR LEDGER IS EMPTY
             </p>
 
-            <span className="empty-icon">◇</span>
+            <span className="empty-icon">
+              ◇
+            </span>
+
           </div>
 
         </div>

@@ -1,10 +1,10 @@
 .dashboard {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1000px;
 
   margin: 0 auto;
 
-  padding: 48px 32px 120px;
+  padding: 24px 28px 70px;
 }
 
 
@@ -15,14 +15,14 @@
 .dashboard-header {
   text-align: center;
 
-  margin-bottom: 64px;
+  margin-bottom: 30px;
 }
 
 .dashboard-subtitle {
-  margin: 0 0 10px;
+  margin: 0 0 5px;
 
-  font-size: 18px;
-  letter-spacing: 4px;
+  font-size: 14px;
+  letter-spacing: 3px;
 
   color: var(--wood-dark);
 }
@@ -30,10 +30,10 @@
 .dashboard-header h1 {
   margin: 0;
 
-  font-size: clamp(48px, 8vw, 82px);
-  line-height: 0.85;
+  font-size: clamp(38px, 5.5vw, 58px);
+  line-height: 0.9;
 
-  letter-spacing: 6px;
+  letter-spacing: 4px;
 
   color: var(--wood-dark);
 }
@@ -46,9 +46,10 @@
 .section-heading {
   display: flex;
   align-items: center;
-  gap: 16px;
 
-  margin-bottom: 16px;
+  gap: 10px;
+
+  margin-bottom: 10px;
 }
 
 .section-heading::before,
@@ -57,13 +58,8 @@
 
   flex: 1;
 
-  height: 4px;
+  height: 2px;
 
-  background: var(--border);
-
-  /*
-    Small pixel breaks in the line.
-  */
   background-image:
     linear-gradient(
       to right,
@@ -76,14 +72,14 @@
 .section-heading h2 {
   margin: 0;
 
-  font-size: 28px;
-  letter-spacing: 3px;
+  font-size: 21px;
+  letter-spacing: 2px;
 
   white-space: nowrap;
 }
 
 .heading-decoration {
-  font-size: 12px;
+  font-size: 9px;
 }
 
 
@@ -92,7 +88,7 @@
 ========================= */
 
 .latest-section {
-  margin-bottom: 56px;
+  margin-bottom: 26px;
 }
 
 .latest-entry {
@@ -100,20 +96,17 @@
   justify-content: space-between;
   align-items: center;
 
-  min-height: 110px;
+  min-height: 64px;
 
-  padding: 20px 28px;
+  padding: 10px 16px;
 
   background: var(--card);
 
-  /*
-    Distinctive border:
-    thick sides + thin top/bottom.
-  */
-  border-top: 3px solid var(--border);
-  border-bottom: 3px solid var(--border);
-  border-left: 7px solid var(--border);
-  border-right: 7px solid var(--border);
+  border-top: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+
+  border-left: 4px solid var(--border);
+  border-right: 4px solid var(--border);
 }
 
 .entry-info {
@@ -123,13 +116,13 @@
 .entry-title {
   margin: 0;
 
-  font-size: 30px;
+  font-size: 22px;
 }
 
 .entry-meta {
-  margin: 6px 0 0;
+  margin: 2px 0 0;
 
-  font-size: 18px;
+  font-size: 14px;
 
   color: var(--wood);
 }
@@ -137,7 +130,7 @@
 .entry-amount {
   margin: 0;
 
-  font-size: 36px;
+  font-size: 26px;
 }
 
 
@@ -146,23 +139,21 @@
 ========================= */
 
 .balance-section {
-  position: relative;
+  margin: 28px 0;
 
-  margin: 72px 0;
-
-  padding: 32px 0;
+  padding: 16px 0;
 
   text-align: center;
 
-  border-top: 4px double var(--border);
-  border-bottom: 4px double var(--border);
+  border-top: 3px double var(--border);
+  border-bottom: 3px double var(--border);
 }
 
 .balance-label {
-  margin: 0 0 10px;
+  margin: 0 0 2px;
 
-  font-size: 22px;
-  letter-spacing: 4px;
+  font-size: 15px;
+  letter-spacing: 3px;
 
   color: var(--wood);
 }
@@ -172,17 +163,17 @@
   justify-content: center;
   align-items: baseline;
 
-  gap: 4px;
+  gap: 2px;
 
   color: var(--wood-dark);
 }
 
 .balance-display span {
-  font-size: 42px;
+  font-size: 27px;
 }
 
 .balance-display strong {
-  font-size: clamp(64px, 10vw, 100px);
+  font-size: clamp(44px, 6vw, 64px);
 
   font-weight: normal;
 
@@ -195,21 +186,24 @@
 ========================= */
 
 .ledger-section {
-  margin-bottom: 48px;
+  margin-bottom: 28px;
 }
 
 
-/* Filters */
+/* =========================
+   FILTERS
+========================= */
 
 .ledger-controls {
   display: flex;
-  gap: 12px;
 
-  margin: 24px 0;
+  gap: 7px;
+
+  margin: 10px 0;
 }
 
 .ledger-controls button {
-  padding: 8px 18px;
+  padding: 5px 12px;
 
   background: transparent;
 
@@ -218,6 +212,8 @@
   border: 2px solid var(--border);
 
   cursor: pointer;
+
+  font-size: 15px;
 
   letter-spacing: 1px;
 }
@@ -235,39 +231,39 @@
 }
 
 
-/* Ledger area */
+/* =========================
+   LEDGER
+========================= */
 
 .ledger-list {
-  min-height: 180px;
+  min-height: 100px;
 
-  padding: 32px;
+  padding: 16px;
 
   background: var(--card);
 
-  border: 3px solid var(--border);
+  border: 2px solid var(--border);
 
-  /*
-    Creates a second inner line
-    without using a shadow.
-  */
   outline: 1px solid var(--border);
-  outline-offset: -9px;
+  outline-offset: -6px;
 }
 
 
-/* Empty state */
+/* =========================
+   EMPTY STATE
+========================= */
 
 .ledger-empty {
-  min-height: 110px;
+  min-height: 64px;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  gap: 20px;
+  gap: 12px;
 
-  font-size: 24px;
-  letter-spacing: 2px;
+  font-size: 18px;
+  letter-spacing: 1px;
 
   text-align: center;
 }
@@ -277,7 +273,7 @@
 }
 
 .empty-icon {
-  font-size: 18px;
+  font-size: 13px;
 
   color: var(--green);
 }
@@ -290,25 +286,29 @@
 @media (max-width: 600px) {
 
   .dashboard {
-    padding: 32px 16px 100px;
+    padding: 20px 14px 60px;
   }
 
   .dashboard-header {
-    margin-bottom: 48px;
+    margin-bottom: 24px;
+  }
+
+  .dashboard-subtitle {
+    font-size: 12px;
+    letter-spacing: 2px;
   }
 
   .dashboard-header h1 {
-    font-size: 48px;
-
-    letter-spacing: 3px;
+    font-size: 39px;
+    letter-spacing: 2px;
   }
 
   .section-heading {
-    gap: 8px;
+    gap: 6px;
   }
 
   .section-heading h2 {
-    font-size: 22px;
+    font-size: 18px;
   }
 
   .heading-decoration {
@@ -316,19 +316,26 @@
   }
 
   .latest-entry {
-    padding: 18px;
+    padding: 9px 12px;
 
-    align-items: flex-start;
-
-    gap: 16px;
+    gap: 10px;
   }
 
   .entry-title {
-    font-size: 25px;
+    font-size: 20px;
   }
 
   .entry-amount {
-    font-size: 28px;
+    font-size: 23px;
+  }
+
+  .balance-section {
+    margin: 24px 0;
+    padding: 14px 0;
+  }
+
+  .balance-display strong {
+    font-size: 50px;
   }
 
   .ledger-controls {
@@ -336,10 +343,10 @@
   }
 
   .ledger-empty {
-    flex-direction: column;
+    min-height: 55px;
 
-    gap: 8px;
+    gap: 7px;
 
-    font-size: 20px;
+    font-size: 16px;
   }
 }

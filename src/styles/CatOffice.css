@@ -1,0 +1,108 @@
+.ledger-cat {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    gap: 8px;
+  
+    margin-top: 12px;
+  }
+  
+  
+  /* =========================
+     CAT
+  ========================= */
+  
+  .cat-button {
+    display: flex;
+    align-items: flex-end;
+  
+    padding: 0;
+  
+    border: none;
+  
+    background: transparent;
+  
+    cursor: pointer;
+  }
+  
+  .ledger-cat-image {
+    display: block;
+  
+    width: 48px;
+    height: auto;
+  
+    image-rendering: pixelated;
+  
+    transition: transform 100ms ease;
+  }
+  
+  .cat-button:hover .ledger-cat-image {
+    transform: translateY(-2px);
+  }
+  
+  
+  /* =========================
+     SPEECH
+  ========================= */
+  
+  .cat-speech {
+    position: relative;
+  
+    max-width: 170px;
+  
+    padding: 6px 9px;
+  
+    background: var(--card);
+  
+    border: 2px solid var(--border);
+  
+    font-size: 15px;
+    line-height: 1;
+  }
+  
+  
+  /* Pixel speech pointer */
+  
+  .cat-speech::before {
+    content: "";
+  
+    position: absolute;
+  
+    left: -7px;
+    top: 10px;
+  
+    width: 7px;
+    height: 7px;
+  
+    background: var(--card);
+  
+    border-left: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+  
+    transform: rotate(45deg);
+  }
+  
+  
+  /* =========================
+     MOBILE
+  ========================= */
+  
+  @media (max-width: 600px) {
+  
+    .ledger-cat {
+      margin-top: 10px;
+  
+      gap: 7px;
+    }
+  
+    .ledger-cat-image {
+      width: 40px;
+    }
+  
+    .cat-speech {
+      max-width: 145px;
+  
+      font-size: 13px;
+    }
+  }
