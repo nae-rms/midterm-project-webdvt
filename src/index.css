@@ -3,10 +3,18 @@
 }
 
 :root {
-  --background: #f4f0e6;
-  --text: #171717;
-  --border: #171717;
-  --card: #ffffff;
+  --background: #d8c7a3;
+  --text: #2e2924;
+
+  --border: #5b4636;
+
+  --card: #f3e8d0;
+
+  --wood: #8a6a4a;
+  --wood-dark: #5b4636;
+
+  --green: #6f7d52;
+  --lamp: #c98b5b;
 }
 
 html,

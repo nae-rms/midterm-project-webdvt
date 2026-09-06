@@ -1,43 +1,105 @@
 import "../styles/Dashboard.css";
 
 function Dashboard() {
-    return (
-      <div className="dashboard">
-        <header className="dashboard-header">
-          <h1>The Little Ledger</h1>
-        </header>
-  
-        <section className="latest-transaction">
-          <h2>Latest Transaction</h2>
-  
-          <div className="transaction-placeholder">
-            No transactions yet.
+  return (
+    <div className="dashboard">
+
+      <header className="dashboard-header">
+        <p className="dashboard-subtitle">
+          PERSONAL BUDGET TRACKER
+        </p>
+
+        <h1>THE LITTLE LEDGER</h1>
+      </header>
+
+
+      <section className="latest-section">
+
+        <div className="section-heading">
+          <span className="heading-decoration">◆</span>
+          <h2>LATEST ENTRY</h2>
+          <span className="heading-decoration">◆</span>
+        </div>
+
+        <div className="latest-entry">
+
+          <div className="entry-info">
+            <p className="entry-title">
+              No transactions yet
+            </p>
+
+            <p className="entry-meta">
+              ---
+            </p>
           </div>
-        </section>
-  
-        <section className="balance-section">
-          <h2>Current Balance</h2>
-  
-          <p className="balance">
+
+          <p className="entry-amount">
             ₱0.00
           </p>
-        </section>
-  
-        <section className="transactions-section">
-          <h2>Transactions</h2>
-  
-          <div className="filters">
-            <button>All</button>
-            <button>Income</button>
-            <button>Expense</button>
+
+        </div>
+
+      </section>
+
+
+      <section className="balance-section">
+
+        <p className="balance-label">
+          CURRENT BALANCE
+        </p>
+
+        <div className="balance-display">
+          <span>₱</span>
+          <strong>0.00</strong>
+        </div>
+
+      </section>
+
+
+      <section className="ledger-section">
+
+        <div className="section-heading">
+          <span className="heading-decoration">◆</span>
+          <h2>LEDGER</h2>
+          <span className="heading-decoration">◆</span>
+        </div>
+
+
+        <div className="ledger-controls">
+
+          <button className="filter-active">
+            ALL
+          </button>
+
+          <button>
+            INCOME
+          </button>
+
+          <button>
+            EXPENSE
+          </button>
+
+        </div>
+
+
+        <div className="ledger-list">
+
+          <div className="ledger-empty">
+            <span className="empty-icon">◇</span>
+
+            <p>
+              YOUR LEDGER IS EMPTY
+            </p>
+
+            <span className="empty-icon">◇</span>
           </div>
-  
-          <div className="transaction-list">
-            <p>No transactions yet.</p>
-          </div>
-        </section>
-      </div>
-    );
-  }
-  
-  export default Dashboard;
+
+        </div>
+
+      </section>
+
+    </div>
+  );
+}
+
+export default Dashboard;

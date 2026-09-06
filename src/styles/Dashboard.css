@@ -1,68 +1,345 @@
 .dashboard {
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 40px 24px 100px;
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 48px 32px 120px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.dashboard-header {
+  text-align: center;
+
+  margin-bottom: 64px;
+}
+
+.dashboard-subtitle {
+  margin: 0 0 10px;
+
+  font-size: 18px;
+  letter-spacing: 4px;
+
+  color: var(--wood-dark);
+}
+
+.dashboard-header h1 {
+  margin: 0;
+
+  font-size: clamp(48px, 8vw, 82px);
+  line-height: 0.85;
+
+  letter-spacing: 6px;
+
+  color: var(--wood-dark);
+}
+
+
+/* =========================
+   SECTION HEADINGS
+========================= */
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  margin-bottom: 16px;
+}
+
+.section-heading::before,
+.section-heading::after {
+  content: "";
+
+  flex: 1;
+
+  height: 4px;
+
+  background: var(--border);
+
+  /*
+    Small pixel breaks in the line.
+  */
+  background-image:
+    linear-gradient(
+      to right,
+      var(--border) 0 70%,
+      transparent 70% 78%,
+      var(--border) 78% 100%
+    );
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  font-size: 28px;
+  letter-spacing: 3px;
+
+  white-space: nowrap;
+}
+
+.heading-decoration {
+  font-size: 12px;
+}
+
+
+/* =========================
+   LATEST ENTRY
+========================= */
+
+.latest-section {
+  margin-bottom: 56px;
+}
+
+.latest-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 110px;
+
+  padding: 20px 28px;
+
+  background: var(--card);
+
+  /*
+    Distinctive border:
+    thick sides + thin top/bottom.
+  */
+  border-top: 3px solid var(--border);
+  border-bottom: 3px solid var(--border);
+  border-left: 7px solid var(--border);
+  border-right: 7px solid var(--border);
+}
+
+.entry-info {
+  min-width: 0;
+}
+
+.entry-title {
+  margin: 0;
+
+  font-size: 30px;
+}
+
+.entry-meta {
+  margin: 6px 0 0;
+
+  font-size: 18px;
+
+  color: var(--wood);
+}
+
+.entry-amount {
+  margin: 0;
+
+  font-size: 36px;
+}
+
+
+/* =========================
+   BALANCE
+========================= */
+
+.balance-section {
+  position: relative;
+
+  margin: 72px 0;
+
+  padding: 32px 0;
+
+  text-align: center;
+
+  border-top: 4px double var(--border);
+  border-bottom: 4px double var(--border);
+}
+
+.balance-label {
+  margin: 0 0 10px;
+
+  font-size: 22px;
+  letter-spacing: 4px;
+
+  color: var(--wood);
+}
+
+.balance-display {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+
+  gap: 4px;
+
+  color: var(--wood-dark);
+}
+
+.balance-display span {
+  font-size: 42px;
+}
+
+.balance-display strong {
+  font-size: clamp(64px, 10vw, 100px);
+
+  font-weight: normal;
+
+  line-height: 0.8;
+}
+
+
+/* =========================
+   LEDGER
+========================= */
+
+.ledger-section {
+  margin-bottom: 48px;
+}
+
+
+/* Filters */
+
+.ledger-controls {
+  display: flex;
+  gap: 12px;
+
+  margin: 24px 0;
+}
+
+.ledger-controls button {
+  padding: 8px 18px;
+
+  background: transparent;
+
+  color: var(--text);
+
+  border: 2px solid var(--border);
+
+  cursor: pointer;
+
+  letter-spacing: 1px;
+}
+
+.ledger-controls button:hover {
+  background: var(--wood-dark);
+
+  color: var(--card);
+}
+
+.ledger-controls .filter-active {
+  background: var(--wood-dark);
+
+  color: var(--card);
+}
+
+
+/* Ledger area */
+
+.ledger-list {
+  min-height: 180px;
+
+  padding: 32px;
+
+  background: var(--card);
+
+  border: 3px solid var(--border);
+
+  /*
+    Creates a second inner line
+    without using a shadow.
+  */
+  outline: 1px solid var(--border);
+  outline-offset: -9px;
+}
+
+
+/* Empty state */
+
+.ledger-empty {
+  min-height: 110px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 20px;
+
+  font-size: 24px;
+  letter-spacing: 2px;
+
+  text-align: center;
+}
+
+.ledger-empty p {
+  margin: 0;
+}
+
+.empty-icon {
+  font-size: 18px;
+
+  color: var(--green);
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .dashboard {
+    padding: 32px 16px 100px;
   }
-  
+
   .dashboard-header {
-    margin-bottom: 40px;
-    text-align: center;
+    margin-bottom: 48px;
   }
-  
+
   .dashboard-header h1 {
-    margin: 0;
     font-size: 48px;
+
     letter-spacing: 3px;
   }
-  
-  .dashboard section {
-    margin-bottom: 40px;
+
+  .section-heading {
+    gap: 8px;
   }
-  
-  .dashboard h2 {
-    margin-bottom: 16px;
+
+  .section-heading h2 {
+    font-size: 22px;
+  }
+
+  .heading-decoration {
+    display: none;
+  }
+
+  .latest-entry {
+    padding: 18px;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  .entry-title {
+    font-size: 25px;
+  }
+
+  .entry-amount {
     font-size: 28px;
   }
-  
-  .transaction-placeholder,
-  .transaction-list {
-    padding: 24px;
-  
-    background: var(--card);
-    border: 3px solid var(--border);
-  
-    box-shadow: 6px 6px 0 var(--border);
+
+  .ledger-controls {
+    flex-wrap: wrap;
   }
-  
-  .balance {
-    margin: 0;
-  
-    font-size: 56px;
+
+  .ledger-empty {
+    flex-direction: column;
+
+    gap: 8px;
+
+    font-size: 20px;
   }
-  
-  .filters {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  
-  .filters button {
-    padding: 8px 16px;
-  
-    background: var(--card);
-    color: var(--text);
-  
-    border: 3px solid var(--border);
-  
-    cursor: pointer;
-  }
-  
-  .filters button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--border);
-  }
-  
-  .transaction-list p {
-    margin: 0;
-  }
+}
