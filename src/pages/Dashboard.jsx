@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import CatOffice from "../components/CatOffice";
 import useTransactions from "../hooks/useTransactions";
 
@@ -35,14 +37,9 @@ function Dashboard() {
       </header>
 
 
-      {/* =========================
-          LATEST ENTRY
-      ========================= */}
-
       <section className="latest-section">
 
         <div className="section-heading">
-
           <span className="heading-decoration">
             ◆
           </span>
@@ -52,67 +49,65 @@ function Dashboard() {
           <span className="heading-decoration">
             ◆
           </span>
-
         </div>
 
 
-        <div className="latest-entry">
+        {latestTransaction ? (
+          <Link
+            to={`/transaction/${latestTransaction.id}`}
+            className="latest-entry"
+          >
 
-          {latestTransaction ? (
-            <>
-              <div className="entry-info">
+            <div className="entry-info">
 
-                <p className="entry-title">
-                  {latestTransaction.title}
-                </p>
-
-                <p className="entry-meta">
-                  {latestTransaction.category} ·{" "}
-                  {latestTransaction.date}
-                </p>
-
-              </div>
-
-              <p className="entry-amount">
-                {latestTransaction.type === "income"
-                  ? "+"
-                  : "-"}
-                ₱
-                {Number(
-                  latestTransaction.amount
-                ).toLocaleString("en-PH", {
-                  minimumFractionDigits: 2,
-                })}
+              <p className="entry-title">
+                {latestTransaction.title}
               </p>
-            </>
-          ) : (
-            <>
-              <div className="entry-info">
 
-                <p className="entry-title">
-                  No transactions yet
-                </p>
-
-                <p className="entry-meta">
-                  ---
-                </p>
-
-              </div>
-
-              <p className="entry-amount">
-                ₱0.00
+              <p className="entry-meta">
+                {latestTransaction.category} ·{" "}
+                {latestTransaction.date}
               </p>
-            </>
-          )}
 
-        </div>
+            </div>
+
+            <p className="entry-amount">
+              {latestTransaction.type === "income"
+                ? "+"
+                : "-"}
+              ₱
+              {Number(
+                latestTransaction.amount
+              ).toLocaleString("en-PH", {
+                minimumFractionDigits: 2,
+              })}
+            </p>
+
+          </Link>
+        ) : (
+          <div className="latest-entry">
+
+            <div className="entry-info">
+
+              <p className="entry-title">
+                No transactions yet
+              </p>
+
+              <p className="entry-meta">
+                ---
+              </p>
+
+            </div>
+
+            <p className="entry-amount">
+              ₱0.00
+            </p>
+
+          </div>
+        )}
 
       </section>
 
-
-      {/* =========================
-          BALANCE
-      ========================= */}
 
       <section className="balance-section">
 
@@ -134,10 +129,6 @@ function Dashboard() {
 
       </section>
 
-
-      {/* =========================
-          LEDGER
-      ========================= */}
 
       <section className="ledger-section">
 
@@ -193,12 +184,14 @@ function Dashboard() {
             </div>
           ) : (
             transactions.map((transaction) => (
-              <div
+              <Link
                 key={transaction.id}
+                to={`/transaction/${transaction.id}`}
                 className="ledger-entry"
               >
 
                 <div>
+
                   <p className="ledger-entry-title">
                     {transaction.title}
                   </p>
@@ -207,6 +200,7 @@ function Dashboard() {
                     {transaction.category} ·{" "}
                     {transaction.date}
                   </p>
+
                 </div>
 
                 <p className="ledger-entry-amount">
@@ -221,7 +215,7 @@ function Dashboard() {
                   })}
                 </p>
 
-              </div>
+              </Link>
             ))
           )}
 
