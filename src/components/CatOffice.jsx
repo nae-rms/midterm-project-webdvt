@@ -1,13 +1,22 @@
 import { useState } from "react";
 
-import cat from "../assets/cat-office/cats/brown2.png";
+import { useTheme } from "../context/ThemeContext";
+
+import brownCat from "../assets/cat-office/cats/brown2.png";
+import whiteCat from "../assets/cat-office/cats/white.png";
 
 import "../styles/CatOffice.css";
 
 function CatOffice() {
+  const { theme } = useTheme();
+
   const [message, setMessage] = useState(
     "Meow! Welcome back."
   );
+
+  const cat = theme === "dark"
+    ? whiteCat
+    : brownCat;
 
   function handleCatClick() {
     setMessage((currentMessage) => {
@@ -34,7 +43,9 @@ function CatOffice() {
         <img
           src={cat}
           alt="Ledger cat"
-          className="ledger-cat-image"
+          className={`ledger-cat-image ${
+            theme === "dark" ? "cat-white" : "cat-brown"
+          }`}
         />
       </button>
 

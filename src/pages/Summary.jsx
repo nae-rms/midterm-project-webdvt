@@ -1,14 +1,12 @@
 import { useMemo } from "react";
 
 import useTransactions from "../hooks/useTransactions";
-import { useTheme } from "../context/ThemeContext";
 import { categories } from "../data/categories";
 
 import "../styles/Summary.css";
 
 function Summary() {
   const { transactions } = useTransactions();
-  const { theme, toggleTheme } = useTheme();
 
   const expenseTotals = useMemo(() => {
     const totals = {};
@@ -62,15 +60,6 @@ function Summary() {
 
         <h1>SUMMARY</h1>
 
-        <button
-          className="theme-toggle"
-          onClick={toggleTheme}
-        >
-          {theme === "light"
-            ? "DARK MODE"
-            : "LIGHT MODE"}
-        </button>
-
       </header>
 
 
@@ -88,11 +77,13 @@ function Summary() {
         </p>
 
         <div className="summary-highest">
+
           <span>HIGHEST CATEGORY</span>
 
           <strong>
             {highestCategory[0]}
           </strong>
+
         </div>
 
       </section>
@@ -101,11 +92,13 @@ function Summary() {
       <section className="category-section">
 
         <div className="summary-section-heading">
+
           <span>◆</span>
 
           <h2>SPENDING BY CATEGORY</h2>
 
           <span>◆</span>
+
         </div>
 
 

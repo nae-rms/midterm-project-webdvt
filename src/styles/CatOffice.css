@@ -1,108 +1,114 @@
 .ledger-cat {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    gap: 8px;
-  
-    margin-top: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 12px;
+}
+
+.cat-button {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  overflow: hidden;
+}
+
+.ledger-cat-image {
+  display: block;
+
+  height: auto;
+
+  image-rendering: pixelated;
+
+  transition: transform 100ms ease;
+}
+
+/* Brown and white sprites have different canvas sizes.
+   These widths keep the visible cats approximately the same size. */
+
+.cat-brown {
+  width: 48px;
+}
+
+.cat-white {
+  width: 42px;
+}
+
+.cat-button:hover .ledger-cat-image {
+  transform: translateY(-2px);
+}
+
+.cat-speech {
+  position: relative;
+
+  max-width: 170px;
+
+  padding: 6px 9px;
+
+  background: var(--card);
+
+  border: 2px solid var(--border);
+
+  font-size: 15px;
+  line-height: 1;
+}
+
+.cat-speech::before {
+  content: "";
+
+  position: absolute;
+
+  left: -7px;
+  top: 10px;
+
+  width: 7px;
+  height: 7px;
+
+  background: var(--card);
+
+  border-left: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+
+  transform: rotate(45deg);
+}
+
+@media (max-width: 600px) {
+  .ledger-cat {
+    margin-top: 10px;
+
+    gap: 7px;
   }
-  
-  
-  /* =========================
-     CAT
-  ========================= */
-  
+
   .cat-button {
-    display: flex;
-    align-items: flex-end;
-  
-    padding: 0;
-  
-    border: none;
-  
-    background: transparent;
-  
-    cursor: pointer;
+    width: 40px;
+    height: 40px;
   }
-  
-  .ledger-cat-image {
-    display: block;
-  
-    width: 48px;
-    height: auto;
-  
-    image-rendering: pixelated;
-  
-    transition: transform 100ms ease;
+
+  .cat-brown {
+    width: 40px;
   }
-  
-  .cat-button:hover .ledger-cat-image {
-    transform: translateY(-2px);
+
+  .cat-white {
+    width: 35px;
   }
-  
-  
-  /* =========================
-     SPEECH
-  ========================= */
-  
+
   .cat-speech {
-    position: relative;
-  
-    max-width: 170px;
-  
-    padding: 6px 9px;
-  
-    background: var(--card);
-  
-    border: 2px solid var(--border);
-  
-    font-size: 15px;
-    line-height: 1;
+    max-width: 145px;
+
+    font-size: 13px;
   }
-  
-  
-  /* Pixel speech pointer */
-  
-  .cat-speech::before {
-    content: "";
-  
-    position: absolute;
-  
-    left: -7px;
-    top: 10px;
-  
-    width: 7px;
-    height: 7px;
-  
-    background: var(--card);
-  
-    border-left: 2px solid var(--border);
-    border-bottom: 2px solid var(--border);
-  
-    transform: rotate(45deg);
-  }
-  
-  
-  /* =========================
-     MOBILE
-  ========================= */
-  
-  @media (max-width: 600px) {
-  
-    .ledger-cat {
-      margin-top: 10px;
-  
-      gap: 7px;
-    }
-  
-    .ledger-cat-image {
-      width: 40px;
-    }
-  
-    .cat-speech {
-      max-width: 145px;
-  
-      font-size: 13px;
-    }
-  }
+}

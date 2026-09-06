@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import CatOffice from "../components/CatOffice";
 import useTransactions from "../hooks/useTransactions";
+import { useTheme } from "../context/ThemeContext";
 
 import "../styles/Dashboard.css";
 
@@ -9,6 +10,8 @@ function Dashboard() {
   const { transactions } = useTransactions();
 
   const latestTransaction = transactions[0];
+
+  const { theme, toggleTheme } = useTheme();
 
   const balance = transactions.reduce(
     (total, transaction) => {
@@ -33,6 +36,13 @@ function Dashboard() {
         <h1>THE LITTLE LEDGER</h1>
 
         <CatOffice />
+
+        <button
+          className="dashboard-theme-toggle"
+          onClick={toggleTheme}
+        >
+          {theme === "light" ? "DARK MODE": "LIGHT MODE"}
+        </button>
 
       </header>
 
