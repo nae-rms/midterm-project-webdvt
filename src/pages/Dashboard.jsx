@@ -4,6 +4,7 @@ import CatOffice from "../components/CatOffice";
 import useTransactions from "../hooks/useTransactions";
 import { useTheme } from "../context/ThemeContext";
 
+
 import "../styles/Dashboard.css";
 
 function Dashboard() {

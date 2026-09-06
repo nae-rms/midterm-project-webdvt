@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 
 import "../styles/Layout.css";
@@ -6,6 +7,20 @@ function Layout() {
   const location = useLocation();
 
   const isDashboard = location.pathname === "/";
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      document.title = "The Little Ledger";
+    } else if (location.pathname === "/add") {
+      document.title = "Add Entry · The Little Ledger";
+    } else if (location.pathname === "/summary") {
+      document.title = "Summary · The Little Ledger";
+    } else if (location.pathname.startsWith("/transaction/")) {
+      document.title = "Entry Details · The Little Ledger";
+    } else {
+      document.title = "The Little Ledger";
+    }
+  }, [location.pathname]);
 
   return (
     <>
