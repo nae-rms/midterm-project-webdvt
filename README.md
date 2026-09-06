@@ -1,16 +1,49 @@
-# React + Vite
+# The Little Ledger
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple personal budget tracker built with React for managing income and expenses.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Add, edit, and delete transactions
+- Track income and expenses
+- Organize transactions by category
+- Filter transactions
+- View current balance
+- View spending by category
+- Light and dark mode
+- Save data with `localStorage`
+- Responsive design
 
-## React Compiler
+## Pages
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Dashboard** — View your balance and transactions
+- **Add Transaction** — Add a new income or expense
+- **Transaction Details** — View, edit, or delete a transaction
+- **Summary** — View spending totals by category
 
-## Expanding the ESLint configuration
+## Built With
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- React Router
+- JavaScript
+- Vite
+- CSS
+- Context API
+- localStorage
+
+## Getting Started
+
+Clone the repository and install the dependencies.
+
+    git clone https://github.com/nae-rms/midterm-project-webdvt.git
+    cd midterm-project-webdvt
+    npm install
+    npm run dev
+
+## Build
+
+    npm run build
+
+## Purpose
+
+The Little Ledger was created as a web development project to practice React, routing, state management, custom hooks, persistent storage, and responsive UI design.
