@@ -1,8 +1,24 @@
 import CatOffice from "../components/CatOffice";
+import useTransactions from "../hooks/useTransaction";
 
 import "../styles/Dashboard.css";
 
 function Dashboard() {
+  const { transactions } = useTransactions();
+
+  const latestTransaction = transactions[0];
+
+  const balance = transactions.reduce(
+    (total, transaction) => {
+      if (transaction.type === "income") {
+        return total + Number(transaction.amount);
+      }
+
+      return total - Number(transaction.amount);
+    },
+    0
+  );
+
   return (
     <div className="dashboard">
 
@@ -19,38 +35,84 @@ function Dashboard() {
       </header>
 
 
+      {/* =========================
+          LATEST ENTRY
+      ========================= */}
+
       <section className="latest-section">
 
         <div className="section-heading">
-          <span className="heading-decoration">◆</span>
+
+          <span className="heading-decoration">
+            ◆
+          </span>
 
           <h2>LATEST ENTRY</h2>
 
-          <span className="heading-decoration">◆</span>
+          <span className="heading-decoration">
+            ◆
+          </span>
+
         </div>
+
 
         <div className="latest-entry">
 
-          <div className="entry-info">
+          {latestTransaction ? (
+            <>
+              <div className="entry-info">
 
-            <p className="entry-title">
-              No transactions yet
-            </p>
+                <p className="entry-title">
+                  {latestTransaction.title}
+                </p>
 
-            <p className="entry-meta">
-              ---
-            </p>
+                <p className="entry-meta">
+                  {latestTransaction.category} ·{" "}
+                  {latestTransaction.date}
+                </p>
 
-          </div>
+              </div>
 
-          <p className="entry-amount">
-            ₱0.00
-          </p>
+              <p className="entry-amount">
+                {latestTransaction.type === "income"
+                  ? "+"
+                  : "-"}
+                ₱
+                {Number(
+                  latestTransaction.amount
+                ).toLocaleString("en-PH", {
+                  minimumFractionDigits: 2,
+                })}
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="entry-info">
+
+                <p className="entry-title">
+                  No transactions yet
+                </p>
+
+                <p className="entry-meta">
+                  ---
+                </p>
+
+              </div>
+
+              <p className="entry-amount">
+                ₱0.00
+              </p>
+            </>
+          )}
 
         </div>
 
       </section>
 
+
+      {/* =========================
+          BALANCE
+      ========================= */}
 
       <section className="balance-section">
 
@@ -59,13 +121,23 @@ function Dashboard() {
         </p>
 
         <div className="balance-display">
+
           <span>₱</span>
 
-          <strong>0.00</strong>
+          <strong>
+            {balance.toLocaleString("en-PH", {
+              minimumFractionDigits: 2,
+            })}
+          </strong>
+
         </div>
 
       </section>
 
+
+      {/* =========================
+          LEDGER
+      ========================= */}
 
       <section className="ledger-section">
 
@@ -103,21 +175,55 @@ function Dashboard() {
 
         <div className="ledger-list">
 
-          <div className="ledger-empty">
+          {transactions.length === 0 ? (
+            <div className="ledger-empty">
 
-            <span className="empty-icon">
-              ◇
-            </span>
+              <span className="empty-icon">
+                ◇
+              </span>
 
-            <p>
-              YOUR LEDGER IS EMPTY
-            </p>
+              <p>
+                YOUR LEDGER IS EMPTY
+              </p>
 
-            <span className="empty-icon">
-              ◇
-            </span>
+              <span className="empty-icon">
+                ◇
+              </span>
 
-          </div>
+            </div>
+          ) : (
+            transactions.map((transaction) => (
+              <div
+                key={transaction.id}
+                className="ledger-entry"
+              >
+
+                <div>
+                  <p className="ledger-entry-title">
+                    {transaction.title}
+                  </p>
+
+                  <p className="ledger-entry-meta">
+                    {transaction.category} ·{" "}
+                    {transaction.date}
+                  </p>
+                </div>
+
+                <p className="ledger-entry-amount">
+                  {transaction.type === "income"
+                    ? "+"
+                    : "-"}
+                  ₱
+                  {Number(
+                    transaction.amount
+                  ).toLocaleString("en-PH", {
+                    minimumFractionDigits: 2,
+                  })}
+                </p>
+
+              </div>
+            ))
+          )}
 
         </div>
 

@@ -278,6 +278,44 @@
   color: var(--green);
 }
 
+/* =========================
+   LEDGER ENTRIES
+========================= */
+
+.ledger-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 14px;
+
+  border-bottom: 1px solid var(--border);
+}
+
+.ledger-entry:last-child {
+  border-bottom: none;
+}
+
+.ledger-entry-title {
+  margin: 0;
+
+  font-size: 20px;
+}
+
+.ledger-entry-meta {
+  margin: 1px 0 0;
+
+  font-size: 13px;
+
+  color: var(--wood);
+}
+
+.ledger-entry-amount {
+  margin: 0;
+
+  font-size: 20px;
+}
+
 
 /* =========================
    MOBILE
