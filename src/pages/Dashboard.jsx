@@ -1,5 +1,5 @@
 import CatOffice from "../components/CatOffice";
-import useTransactions from "../hooks/useTransaction";
+import useTransactions from "../hooks/useTransactions";
 
 import "../styles/Dashboard.css";
 
