@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -17,6 +19,21 @@
   --lamp: #c98b5b;
 }
 
+:root[data-theme="dark"] {
+  --background: #29251f;
+  --text: #eee2c9;
+
+  --border: #b49a78;
+
+  --card: #3a332a;
+
+  --wood: #b4936b;
+  --wood-dark: #d0b28a;
+
+  --green: #8f9f6b;
+  --lamp: #d39a69;
+}
+
 html,
 body {
   margin: 0;
@@ -30,7 +47,11 @@ body {
   background: var(--background);
   color: var(--text);
 
-  font-family: monospace;
+  font-family: "VT323", monospace;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
 }
 
 button,
@@ -40,6 +61,15 @@ textarea {
   font: inherit;
 }
 
+button {
+  color: inherit;
+}
+
 img {
   image-rendering: pixelated;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
