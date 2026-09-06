@@ -1,89 +1,131 @@
+/* =========================
+   BOTTOM NAVIGATION
+========================= */
+
 .bottom-nav {
-    position: fixed;
-  
-    left: 50%;
-    bottom: 14px;
-  
-    transform: translateX(-50%);
-  
-    z-index: 100;
-  
-    display: flex;
-    align-items: stretch;
-  
-    width: min(430px, calc(100% - 28px));
-  
-    background: var(--card);
-  
-    border: 3px solid var(--border);
-  
-    box-shadow: 4px 4px 0 var(--border);
+  display: flex;
+  align-items: stretch;
+
+  width: min(430px, calc(100% - 28px));
+
+  margin: 20px auto;
+
+  background: var(--card);
+
+  border: 3px solid var(--border);
+
+  box-shadow: 4px 4px 0 var(--border);
+}
+
+/* Dashboard only */
+
+.bottom-nav-fixed {
+  position: fixed;
+
+  left: 50%;
+  bottom: 14px;
+
+  z-index: 100;
+
+  margin: 0;
+
+  transform: translateX(-50%);
+}
+
+/* =========================
+   NAVIGATION ITEMS
+========================= */
+
+.nav-item {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2px;
+
+  min-height: 52px;
+
+  padding: 5px 8px;
+
+  color: var(--text);
+
+  text-decoration: none;
+
+  border-right: 2px solid var(--border);
+
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  transition:
+    background-color 100ms ease,
+    color 100ms ease;
+}
+
+.nav-item:last-child {
+  border-right: none;
+}
+
+.nav-item:hover {
+  background: var(--wood);
+
+  color: var(--card);
+}
+
+.nav-item.active {
+  background: var(--wood-dark);
+
+  color: var(--card);
+}
+
+/* =========================
+   NAVIGATION ICONS
+========================= */
+
+.nav-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.nav-item:nth-child(2) .nav-icon {
+  font-size: 18px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .bottom-nav {
+    width: calc(100% - 20px);
+
+    margin: 16px auto;
   }
-  
+
+  .bottom-nav-fixed {
+    left: 10px;
+    bottom: 10px;
+
+    width: calc(100% - 20px);
+
+    margin: 0;
+
+    transform: none;
+  }
+
   .nav-item {
-    flex: 1;
-  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  
-    gap: 2px;
-  
-    min-height: 52px;
-  
-    padding: 5px 8px;
-  
-    color: var(--text);
-  
-    border-right: 2px solid var(--border);
-  
-    text-decoration: none;
-  
-    font-size: 14px;
-    letter-spacing: 1px;
-  
-    transition:
-      background-color 100ms ease,
-      color 100ms ease;
-  }
-  
-  .nav-item:last-child {
-    border-right: none;
-  }
-  
-  .nav-item:hover {
-    background: var(--wood);
-  
-    color: var(--card);
-  }
-  
-  .nav-item.active {
-    background: var(--wood-dark);
-  
-    color: var(--card);
-  }
-  
-  .nav-icon {
+    min-height: 48px;
+
     font-size: 12px;
-  
-    line-height: 1;
   }
-  
+
+  .nav-icon {
+    font-size: 9px;
+  }
+
   .nav-item:nth-child(2) .nav-icon {
-    font-size: 18px;
+    font-size: 16px;
   }
-  
-  @media (max-width: 600px) {
-    .bottom-nav {
-      bottom: 10px;
-  
-      width: calc(100% - 20px);
-    }
-  
-    .nav-item {
-      min-height: 48px;
-  
-      font-size: 12px;
-    }
-  }
+}

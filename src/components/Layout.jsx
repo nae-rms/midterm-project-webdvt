@@ -1,15 +1,25 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 
-import "./../styles/Layout.css";
+import "../styles/Layout.css";
 
 function Layout() {
+  const location = useLocation();
+
+  const isDashboard = location.pathname === "/";
+
   return (
     <>
       <main>
         <Outlet />
       </main>
 
-      <nav className="bottom-nav">
+      <nav
+        className={
+          isDashboard
+            ? "bottom-nav bottom-nav-fixed"
+            : "bottom-nav"
+        }
+      >
         <NavLink
           to="/"
           end
