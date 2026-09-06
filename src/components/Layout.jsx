@@ -12,11 +12,11 @@ function Layout() {
     if (location.pathname === "/") {
       document.title = "The Little Ledger";
     } else if (location.pathname === "/add") {
-      document.title = "Add Entry · The Little Ledger";
+      document.title = "The Little Ledger | Add Entry";
     } else if (location.pathname === "/summary") {
-      document.title = "Summary · The Little Ledger";
+      document.title = "The Little Ledger | Summary";
     } else if (location.pathname.startsWith("/transaction/")) {
-      document.title = "Entry Details · The Little Ledger";
+      document.title = "The Little Ledger | Entry Details";
     } else {
       document.title = "The Little Ledger";
     }
