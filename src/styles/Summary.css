@@ -14,7 +14,7 @@
 .summary-header {
   position: relative;
 
-  margin-bottom: 28px;
+  margin-bottom: 24px;
 
   text-align: center;
 }
@@ -76,56 +76,75 @@
 }
 
 /* =========================
-   OVERVIEW
+   FINANCIAL OVERVIEW
 ========================= */
 
 .summary-overview {
-  margin-bottom: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-  padding: 18px;
-
-  text-align: center;
+  margin-bottom: 24px;
 
   background: var(--card);
 
   border: 2px solid var(--border);
 }
 
-.summary-label {
-  margin: 0;
+.summary-metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  font-size: 15px;
-  letter-spacing: 3px;
+  min-width: 0;
 
-  color: var(--wood);
+  padding: 12px 8px;
+
+  border-right: 1px solid var(--border);
+
+  text-align: center;
 }
 
-.summary-total {
-  margin: 4px 0 12px;
+.summary-metric:last-child {
+  border-right: none;
+}
 
-  font-size: 48px;
+.summary-metric-label {
+  margin-bottom: 2px;
 
-  line-height: 0.9;
+  color: var(--wood);
 
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.summary-metric strong {
+  font-size: 25px;
+
+  font-weight: normal;
+
+  line-height: 1;
+}
+
+.summary-income {
+  color: var(--green);
+}
+
+.summary-expense {
+  color: var(--lamp);
+}
+
+.summary-balance {
   color: var(--wood-dark);
 }
 
-.summary-highest {
-  display: flex;
-  justify-content: center;
-
-  gap: 8px;
-
-  font-size: 16px;
-}
-
-.summary-highest span {
-  color: var(--wood);
-}
-
 /* =========================
-   SECTION HEADING
+   CATEGORY SECTIONS
 ========================= */
+
+.category-section {
+  margin-bottom: 22px;
+}
 
 .summary-section-heading {
   display: flex;
@@ -133,7 +152,7 @@
 
   gap: 10px;
 
-  margin-bottom: 12px;
+  margin-bottom: 9px;
 }
 
 .summary-section-heading::before,
@@ -150,14 +169,14 @@
 .summary-section-heading h2 {
   margin: 0;
 
-  font-size: 20px;
+  font-size: 19px;
   letter-spacing: 2px;
 
   white-space: nowrap;
 }
 
 .summary-section-heading span {
-  font-size: 9px;
+  font-size: 8px;
 }
 
 /* =========================
@@ -165,7 +184,7 @@
 ========================= */
 
 .category-list {
-  padding: 16px;
+  padding: 10px 16px;
 
   background: var(--card);
 
@@ -176,7 +195,7 @@
 }
 
 .category-row {
-  padding: 10px 4px;
+  padding: 7px 4px;
 
   border-bottom: 1px solid var(--border);
 }
@@ -188,10 +207,11 @@
 .category-info {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  margin-bottom: 5px;
+  margin-bottom: 4px;
 
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .category-name {
@@ -204,7 +224,7 @@
 
 .category-bar {
   width: 100%;
-  height: 8px;
+  height: 7px;
 
   background: var(--background);
 
@@ -240,8 +260,41 @@
     font-size: 40px;
   }
 
-  .summary-total {
-    font-size: 42px;
+  /* Stack the financial metrics on mobile */
+
+  .summary-overview {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .summary-metric {
+    flex-direction: row;
+    justify-content: space-between;
+
+    padding: 8px 14px;
+
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+
+    text-align: left;
+  }
+
+  .summary-metric:last-child {
+    border-bottom: none;
+  }
+
+  .summary-metric-label {
+    margin: 0;
+
+    font-size: 13px;
+  }
+
+  .summary-metric strong {
+    font-size: 21px;
+  }
+
+  .category-section {
+    margin-bottom: 18px;
   }
 
   .summary-section-heading {
@@ -257,6 +310,14 @@
   }
 
   .category-list {
-    padding: 12px;
+    padding: 9px 12px;
+  }
+
+  .category-row {
+    padding: 6px 4px;
+  }
+
+  .category-info {
+    font-size: 16px;
   }
 }

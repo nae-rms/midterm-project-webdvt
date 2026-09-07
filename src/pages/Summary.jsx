@@ -10,6 +10,24 @@ function Summary() {
   const { transactions } = useTransactions();
   const { theme, toggleTheme } = useTheme();
 
+  const incomeTotals = useMemo(() => {
+    const totals = {};
+
+    categories.income.forEach((category) => {
+      totals[category] = 0;
+    });
+
+    transactions.forEach((transaction) => {
+      if (transaction.type === "income") {
+        totals[transaction.category] += Number(
+          transaction.amount
+        );
+      }
+    });
+
+    return totals;
+  }, [transactions]);
+
   const expenseTotals = useMemo(() => {
     const totals = {};
 
@@ -28,6 +46,16 @@ function Summary() {
     return totals;
   }, [transactions]);
 
+  const totalIncome = useMemo(() => {
+    return transactions.reduce((total, transaction) => {
+      if (transaction.type === "income") {
+        return total + Number(transaction.amount);
+      }
+
+      return total;
+    }, 0);
+  }, [transactions]);
+
   const totalExpenses = useMemo(() => {
     return transactions.reduce((total, transaction) => {
       if (transaction.type === "expense") {
@@ -38,18 +66,13 @@ function Summary() {
     }, 0);
   }, [transactions]);
 
-  const highestCategory = useMemo(() => {
-    return Object.entries(expenseTotals).reduce(
-      (highest, current) => {
-        if (current[1] > highest[1]) {
-          return current;
-        }
+  const balance = totalIncome - totalExpenses;
 
-        return highest;
-      },
-      ["None", 0]
-    );
-  }, [expenseTotals]);
+  function formatAmount(amount) {
+    return amount.toLocaleString("en-PH", {
+      minimumFractionDigits: 2,
+    });
+  }
 
   return (
     <main className="summary-page">
@@ -79,32 +102,102 @@ function Summary() {
         <h1>SUMMARY</h1>
       </header>
 
+      {/* =========================
+          FINANCIAL OVERVIEW
+      ========================= */}
+
       <section className="summary-overview">
-        <p className="summary-label">
-          TOTAL EXPENSES
-        </p>
+        <div className="summary-metric">
+          <span className="summary-metric-label">
+            INCOME
+          </span>
 
-        <p className="summary-total">
-          ₱
-          {totalExpenses.toLocaleString("en-PH", {
-            minimumFractionDigits: 2,
-          })}
-        </p>
+          <strong className="summary-income">
+            ₱{formatAmount(totalIncome)}
+          </strong>
+        </div>
 
-        <div className="summary-highest">
-          <span>HIGHEST CATEGORY</span>
+        <div className="summary-metric">
+          <span className="summary-metric-label">
+            EXPENSES
+          </span>
 
-          <strong>
-            {highestCategory[0]}
+          <strong className="summary-expense">
+            ₱{formatAmount(totalExpenses)}
+          </strong>
+        </div>
+
+        <div className="summary-metric">
+          <span className="summary-metric-label">
+            BALANCE
+          </span>
+
+          <strong className="summary-balance">
+            ₱{formatAmount(balance)}
           </strong>
         </div>
       </section>
+
+      {/* =========================
+          INCOME
+      ========================= */}
 
       <section className="category-section">
         <div className="summary-section-heading">
           <span>◆</span>
 
-          <h2>SPENDING BY CATEGORY</h2>
+          <h2>INCOME</h2>
+
+          <span>◆</span>
+        </div>
+
+        <div className="category-list">
+          {categories.income.map((category) => {
+            const amount = incomeTotals[category];
+
+            const percentage =
+              totalIncome > 0
+                ? (amount / totalIncome) * 100
+                : 0;
+
+            return (
+              <div
+                className="category-row"
+                key={category}
+              >
+                <div className="category-info">
+                  <span className="category-name">
+                    {category}
+                  </span>
+
+                  <span className="category-amount">
+                    ₱{formatAmount(amount)}
+                  </span>
+                </div>
+
+                <div className="category-bar">
+                  <div
+                    className="category-bar-fill"
+                    style={{
+                      width: `${percentage}%`,
+                    }}
+                  />
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* =========================
+          EXPENSES
+      ========================= */}
+
+      <section className="category-section">
+        <div className="summary-section-heading">
+          <span>◆</span>
+
+          <h2>EXPENSES</h2>
 
           <span>◆</span>
         </div>
@@ -129,10 +222,7 @@ function Summary() {
                   </span>
 
                   <span className="category-amount">
-                    ₱
-                    {amount.toLocaleString("en-PH", {
-                      minimumFractionDigits: 2,
-                    })}
+                    ₱{formatAmount(amount)}
                   </span>
                 </div>
 
