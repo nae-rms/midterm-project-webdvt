@@ -1,5 +1,6 @@
 import { useMemo } from "react";
 
+import { useTheme } from "../context/ThemeContext";
 import useTransactions from "../hooks/useTransactions";
 import { categories } from "../data/categories";
 
@@ -7,6 +8,7 @@ import "../styles/Summary.css";
 
 function Summary() {
   const { transactions } = useTransactions();
+  const { theme, toggleTheme } = useTheme();
 
   const expenseTotals = useMemo(() => {
     const totals = {};
@@ -51,20 +53,33 @@ function Summary() {
 
   return (
     <main className="summary-page">
-
       <header className="summary-header">
+        <button
+          className="summary-theme-toggle"
+          onClick={toggleTheme}
+          aria-label={
+            theme === "light"
+              ? "Switch to dark mode"
+              : "Switch to light mode"
+          }
+        >
+          <span className="summary-theme-icon">
+            {theme === "light" ? "☾" : "☀"}
+          </span>
+
+          <span>
+            {theme === "light" ? "DARK" : "LIGHT"}
+          </span>
+        </button>
 
         <p className="summary-subtitle">
           THE LITTLE LEDGER
         </p>
 
         <h1>SUMMARY</h1>
-
       </header>
 
-
       <section className="summary-overview">
-
         <p className="summary-label">
           TOTAL EXPENSES
         </p>
@@ -77,33 +92,24 @@ function Summary() {
         </p>
 
         <div className="summary-highest">
-
           <span>HIGHEST CATEGORY</span>
 
           <strong>
             {highestCategory[0]}
           </strong>
-
         </div>
-
       </section>
 
-
       <section className="category-section">
-
         <div className="summary-section-heading">
-
           <span>◆</span>
 
           <h2>SPENDING BY CATEGORY</h2>
 
           <span>◆</span>
-
         </div>
 
-
         <div className="category-list">
-
           {categories.expense.map((category) => {
             const amount = expenseTotals[category];
 
@@ -117,9 +123,7 @@ function Summary() {
                 className="category-row"
                 key={category}
               >
-
                 <div className="category-info">
-
                   <span className="category-name">
                     {category}
                   </span>
@@ -130,28 +134,21 @@ function Summary() {
                       minimumFractionDigits: 2,
                     })}
                   </span>
-
                 </div>
 
                 <div className="category-bar">
-
                   <div
                     className="category-bar-fill"
                     style={{
                       width: `${percentage}%`,
                     }}
                   />
-
                 </div>
-
               </div>
             );
           })}
-
         </div>
-
       </section>
-
     </main>
   );
 }
