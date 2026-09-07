@@ -1,8 +1,12 @@
 import { useMemo, useState } from "react";
+
 import { Link } from "react-router-dom";
+
 import { useTheme } from "../context/ThemeContext";
 
 import CatOffice from "../components/CatOffice";
+import LedgerEntry from "../components/LedgerEntry";
+
 import useTransactions from "../hooks/useTransactions";
 import { categories } from "../data/categories";
 
@@ -13,6 +17,7 @@ function Dashboard() {
   const { theme, toggleTheme } = useTheme();
 
   const [typeFilter, setTypeFilter] = useState("all");
+
   const [categoryFilter, setCategoryFilter] =
     useState("all");
 
@@ -271,34 +276,10 @@ function Dashboard() {
             </div>
           ) : (
             filteredTransactions.map((transaction) => (
-              <Link
+              <LedgerEntry
                 key={transaction.id}
-                to={`/transaction/${transaction.id}`}
-                className="ledger-entry"
-              >
-                <div>
-                  <p className="ledger-entry-title">
-                    {transaction.title}
-                  </p>
-
-                  <p className="ledger-entry-meta">
-                    {transaction.category} ·{" "}
-                    {transaction.date}
-                  </p>
-                </div>
-
-                <p className="ledger-entry-amount">
-                  {transaction.type === "income"
-                    ? "+"
-                    : "-"}
-                  ₱
-                  {Number(
-                    transaction.amount
-                  ).toLocaleString("en-PH", {
-                    minimumFractionDigits: 2,
-                  })}
-                </p>
-              </Link>
+                transaction={transaction}
+              />
             ))
           )}
         </div>
