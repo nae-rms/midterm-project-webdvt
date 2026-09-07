@@ -42,9 +42,8 @@
   padding: 4px 8px;
 
   background: var(--card);
-  color: var(--text);
-
   border: 2px solid var(--border);
+  color: var(--text);
 
   cursor: pointer;
 
@@ -76,9 +75,7 @@
 .section-heading::before,
 .section-heading::after {
   content: "";
-
   flex: 1;
-
   height: 2px;
 
   background-image:
@@ -92,10 +89,8 @@
 
 .section-heading h2 {
   margin: 0;
-
   font-size: 21px;
   letter-spacing: 2px;
-
   white-space: nowrap;
 }
 
@@ -117,7 +112,6 @@
   align-items: center;
 
   min-height: 64px;
-
   padding: 10px 16px;
 
   background: var(--card);
@@ -148,9 +142,7 @@
 
 .entry-meta {
   margin: 2px 0 0;
-
   color: var(--wood);
-
   font-size: 14px;
 }
 
@@ -190,7 +182,6 @@
   display: flex;
   justify-content: center;
   align-items: baseline;
-
   gap: 2px;
 
   color: var(--wood-dark);
@@ -216,7 +207,6 @@
 
 .ledger-list {
   min-height: 100px;
-
   padding: 16px;
 
   background: var(--card);
@@ -233,8 +223,15 @@
 
 .ledger-controls {
   display: flex;
+  align-items: center;
   gap: 7px;
+
   margin: 10px 0;
+}
+
+.type-filters {
+  display: flex;
+  gap: 7px;
 }
 
 .ledger-controls button {
@@ -255,6 +252,28 @@
 .ledger-controls .filter-active {
   background: var(--wood-dark);
   color: var(--card);
+}
+
+.category-filter {
+  min-width: 145px;
+
+  padding: 5px 8px;
+
+  background: var(--card);
+  color: var(--text);
+
+  border: 2px solid var(--border);
+
+  outline: none;
+
+  cursor: pointer;
+
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.category-filter:focus {
+  border-width: 3px;
 }
 
 /* =========================
@@ -341,7 +360,7 @@
 
 @media (max-width: 600px) {
   .dashboard {
-    padding: 20px 14px 60px;
+    padding: 20px 14px 70px;
   }
 
   .dashboard-header {
@@ -399,6 +418,14 @@
 
   .ledger-controls {
     flex-wrap: wrap;
+  }
+
+  .type-filters {
+    flex-wrap: wrap;
+  }
+
+  .category-filter {
+    width: 100%;
   }
 
   .ledger-empty {
